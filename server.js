@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const db = require('./queries')
 
 app.use(bodyParser.json());
@@ -12,9 +12,9 @@ app.use(
 )
 
 //route for general map
-app.get('/', db.getMLS)
+app.get('/api', db.getMLS)
 //route for each individual state's mls data
-app.get('/:state', db.getState);
+app.get('/api/:state', db.getState);
 /*
 app.get('/', (req, res) => {
     res.json({ info: 'Node.js, Express, and Postgres API' })
