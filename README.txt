@@ -1,3 +1,9 @@
+'docker-compose up' in same directory as readme to start postgres instance
+Environment variables are set to demo in compose file
+To run psql in docker: docker exec -it [container name] psql -U demo -W demo
+
+Todos:
+
 Express server that pulls data from db
 
 Db should be seeded with last updated
