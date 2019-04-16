@@ -1,0 +1,24 @@
+{
+  "name": "wolfheatmap",
+  "version": "1.0.0",
+  "description": "'docker-compose up' in same directory as readme to start postgres instance Environment variables are set to demo in compose file To run psql in docker: docker exec -it [container name] psql -U demo -W demo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinzliao/psqlheatmap.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinzliao/psqlheatmap/issues"
+  },
+  "homepage": "https://github.com/kevinzliao/psqlheatmap#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pg": "^7.9.0"
+  }
+}
