@@ -11,7 +11,10 @@ app.use(
     })
 )
 
+//route for general map
 app.get('/', db.getMLS)
+//route for each individual state's mls data
+app.get('/:state', db.getState);
 /*
 app.get('/', (req, res) => {
     res.json({ info: 'Node.js, Express, and Postgres API' })

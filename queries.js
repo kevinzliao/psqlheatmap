@@ -18,6 +18,17 @@ const getMLS = (req, res) => {
     })
 }
 
+const getState = (req, res) => {
+    const state = req.params.state;
+    pool.query('SELECT * FROM mls_items WHERE state = $1', [state], (err, results) => {
+        if (err) {
+            throw err
+        }
+    res.status(200).json(results.rows)
+    })
+}
+
 module.exports = {
-    getMLS
+    getMLS,
+    getState,
 }
