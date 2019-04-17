@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import Datamap from 'datamaps/dist/datamaps.world.min.js';
+import Datamap from 'datamaps/dist/datamaps.usa.min.js';
 import d3 from 'd3';
 import UsaJson from './Usa.topo.json';
 
 class ChoroplethMap extends Component {
+
+    
+      
     componentDidMount() {
+        console.log('we rendered with' + this.props.data)
         // Datamaps expect data in format:
         // { "USA": { "fillColor": "#42a844", numberOfWhatever: 75},
         //   "FRA": { "fillColor": "#8dc386", numberOfWhatever: 43 } }
@@ -27,13 +31,16 @@ class ChoroplethMap extends Component {
         this.props.data.forEach(function (item) { //
             // item example value ["USA", 70]
             let iso = item[0],
-                value = item[1];
-            dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
+                value = item[1],
+                lastUpdated = item[2];
+            dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value), lastUpdated };
         });
 
+
         let map = new Datamap({
-            element: document.getElementById('cloropleth_map'),
-            scope: 'usa',
+            //specify dom element
+            element: document.getElementById('choropleth_map'),
+            scope: "usa",
             geographyConfig: {
                 popupOnHover: true,
                 highlightOnHover: true,
@@ -44,10 +51,11 @@ class ChoroplethMap extends Component {
                 popupTemplate: function (geo, data) {
                     // don't show tooltip if country don't present in dataset
                     if (!data) { return; }
-                    // tooltip content
+
                     return ['<div class="hoverinfo">',
                         '<strong>', geo.properties.name, '</strong>',
                         '<br>Count: <strong>', data.numberOfThings, '</strong>',
+                        '<br>Last Updated: <strong>', data.lastUpdated, '</strong>',
                         '</div>'].join('');
                 }
             },
@@ -72,7 +80,7 @@ class ChoroplethMap extends Component {
     }
     render() {
         return (
-            <div id="cloropleth_map" style={{
+            <div id="choropleth_map" style={{
                 height: "100%",
                 width: "100%",
             }}></div>

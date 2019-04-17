@@ -8,7 +8,6 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
       //to be array of json objects from each states from route '/api/'
       states: [
         /*
@@ -23,27 +22,34 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.getInfo()
     //poll our database every x milliseconds
-    this.timer = setInterval(()=> this.getInfo(), 1000*300);
-
-    //initialize chart here
+    this.timer = setInterval(()=> this.getInfo(), 10000);
   }
 
   getInfo() {
     axios.get('/api/')
       .then(res => {
         console.log(res.data)
-        this.setState({states: res.data})
+        console.log(this.state.states)
+        const newstate = res.data.map(x => {
+            return [x.state, +x.count, x.last_update]
+        })
+        console.log(newstate)
+        //this.setState({states: res.data})
+        this.setState({states: newstate})
       })
   }
+
+  
 
   render() {
     return (
       <div style={{
-        height:"100vh",
-        width: "100vw"
+        height:"100%",
+        width: "100%"
       }}>
-        <ChoroplethMap data={this.state.data}/>
+        <ChoroplethMap key={this.state.states} data={this.state.states}/>
       </div>
     );
   }
