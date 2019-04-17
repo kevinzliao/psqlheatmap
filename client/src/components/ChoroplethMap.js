@@ -81,6 +81,7 @@ class ChoroplethMap extends Component {
     render() {
         return (
             <div id="choropleth_map" style={{
+                padding: 80,
                 height: "100%",
                 width: "100%",
             }}></div>

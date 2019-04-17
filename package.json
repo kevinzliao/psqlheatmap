@@ -1,7 +1,7 @@
 {
   "name": "wolfheatmap",
   "version": "1.0.0",
-  "description": "'docker-compose up' in same directory as readme to start postgres instance Environment variables are set to demo in compose file To run psql in docker: docker exec -it [container name] psql -U demo -W demo",
+  "description": "heatmap with express, docker, and react",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
