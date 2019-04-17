@@ -16,6 +16,10 @@ VALUES
 (1292709, 'MN', NOW()),
 (12345678, 'NV', NOW());
 
+INSERT INTO mls_items 
+VALUES
+(124918, 'MN', NOW()),
+(123582832, 'NV', NOW());
 
 
 Todos:
