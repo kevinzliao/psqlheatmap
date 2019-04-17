@@ -18,20 +18,12 @@ VALUES
 
 INSERT INTO mls_items 
 VALUES
-(124918, 'MN', NOW()),
-(123582832, 'NV', NOW());
+(124123488, 'SC', NOW()),
+(123534512, 'MA', NOW());
 
 
 Todos:
 
-Express server that pulls data from db
+Fix postgres database to hold timestamps properly
 
-Db should be seeded with last updated
-
-Express server does a get and then uses that data to create heatmap
-
-Heatmap based on data with last updated market (i.e market that has been last updated over  48 hours ago) with list of last update
-
-Postgres that autoupdates every second with random state for testing (i.e. docker file to test)
-
-probably sql such as SELECT COUNT(*), MAX(TIME), State from table group by State
+Add sql script to seed in docker
